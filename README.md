@@ -1,3 +1,3 @@
 # BookStoreAPI
 
-#### Deploy Linke : https://bookstoreapi-dfzf.onrender.com/
+#### Deploy Link: https://bookstoreapi-dfzf.onrender.com/
