@@ -1,6 +1,9 @@
 const express = require('express');
 const connectMongo = require('./configs/mongodb');
 const mysqldb = require('./configs/mysqldb');
+const customer = require('./routes/customerRouter');
+const order = require('./routes/orderRouter');
+const orderItem = require('./routes/orderItemRouter');
 
 require('dotenv').config();
 
@@ -13,6 +16,10 @@ const MONGO_URL = process.env.MONGO_URL
 app.get('/', (req, res) =>{
     res.send('This is home route');
 })
+
+app.use('/customer', customer);
+app.use('/oders', order);
+app.use('/orderItem', orderItem)
 
 app.listen(PORT, async () =>{
     try{
