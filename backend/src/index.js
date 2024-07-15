@@ -4,6 +4,10 @@ const mysqldb = require('./configs/mysqldb');
 const customer = require('./routes/customerRouter');
 const order = require('./routes/orderRouter');
 const orderItem = require('./routes/orderItemRouter');
+const book = require('./routes/bookRoute');
+const review = require('./routes/orderDetailRoute');
+const { authenticateJWT } = require('./middilewares/authMiddleware');
+const logger = require('../logger');
 
 require('dotenv').config();
 
@@ -20,6 +24,18 @@ app.get('/', (req, res) =>{
 app.use('/customer', customer);
 app.use('/oders', order);
 app.use('/orderItem', orderItem)
+app.use('/book', book);
+app.use('/review', review);
+
+// swaggerJsDocs(app);
+
+app.use(authenticateJWT);
+
+app.use((err, req, res, next) => {
+  logger.error(err.stack);
+  res.status(500).send('Something broke!');
+  next();
+});
 
 app.listen(PORT, async () =>{
     try{
@@ -31,4 +47,5 @@ app.listen(PORT, async () =>{
         console.log(err);
     }
 })
+
 
