@@ -7,7 +7,6 @@ const orderItem = require('./routes/orderItemRouter');
 const book = require('./routes/bookRoute');
 const review = require('./routes/orderDetailRoute');
 const { authenticateJWT } = require('./middilewares/authMiddleware');
-const logger = require('../logger');
 
 require('dotenv').config();
 
@@ -31,12 +30,6 @@ app.use('/review', review);
 
 app.use(authenticateJWT);
 
-app.use((err, req, res, next) => {
-  logger.error(err.stack);
-  res.status(500).send('Something broke!');
-  next();
-});
-
 app.listen(PORT, async () =>{
     try{
         await connectMongo(MONGO_URL);
@@ -49,3 +42,4 @@ app.listen(PORT, async () =>{
 })
 
 
+module.exports = app

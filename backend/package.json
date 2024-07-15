@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
   "dependencies": {
     "chai": "^5.1.1",
     "dotenv": "^16.4.5",
+    "events": "^3.3.0",
     "express": "^4.19.2",
     "mocha": "^10.6.0",
     "mongoose": "^8.5.1",
@@ -20,6 +22,8 @@
     "nodemon": "^3.1.4",
     "sequelize": "^6.37.3",
     "supertest": "^7.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "winston": "^3.13.1"
   }
 }
